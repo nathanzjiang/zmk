@@ -1,0 +1,7 @@
+/ {
+	layouts_numpad_12_key_map: layouts_numpad_12_key_map {
+		compatible = "zmk,physical-layout-position-map";
+
+		complete;
+	};
+};
