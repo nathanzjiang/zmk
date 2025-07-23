@@ -15,13 +15,13 @@
 
         default_layer {
 // -------------------
-// |  A  |  B  |  C  |
+// |  A  |  B  |  Studio  |
 // |  D  |  E  |  F  |
 // |  G  |  H  |  I  |
 // |  J  |  K  |  L  |
 // -------------------
             bindings = <
-    &kp A &kp B &kp C
+    &kp A &kp B &studio_unlock
     &kp D &kp E &kp F
     &kp G &kp H &kp I
     &kp J &kp K &kp L
