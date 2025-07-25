@@ -10,23 +10,61 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+
+    /**
+     * Switches to layer and changes RGB Underglow color
+     *
+     * Example:
+     *  `&lm NUM_LAYER RGB_COLOR_HSB(300, 100, 50)`
+     */
+    lm: lm {
+        compatible = "zmk,behavior-macro-two-param";
+        wait-ms = <0>;
+        tap-ms = <0>;
+        #binding-cells = <2>;
+        bindings = <
+            &macro_param_1to1
+            , &macro_tap &to MACRO_PLACEHOLDER
+            , &macro_param_2to1
+            , &macro_tap &rgb_ug MACRO_PLACEHOLDER
+        >;
+    }
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-// -------------------
-// |  A  |  B  |  Studio  |
+        home_layer {
+// ----------------------------------------------
+// |  Bluetooth Layer  |  RGB Layer  |  Studio  |
 // |  D  |  E  |  F  |
 // |  G  |  H  |  I  |
-// |  J  |  K  |  L  |
+// |  J  |  K  |  Home  |
 // -------------------
             bindings = <
-    &kp A &kp B &studio_unlock
+    &lm 1 RGB_COLOR_HSB(209, 100, 99) &to 2 &studio_unlock
     &kp D &kp E &kp F
     &kp G &kp H &kp I
-    &kp J &kp K &kp L
+    &kp J &kp K &to 0
             >;
 
         };
+
+        bluetooth_layer {
+            bindings = <
+            &kp 0 &kp 1 &kp 2
+            &kp 3 &kp 4 &kp 5
+            &kp 6 &kp 7 &kp 8
+            &kp 9 &kp B &to 0
+            >;
+            };
+        };
+
+        rgb_layer {
+            bindings = <
+            &kp 0 &kp 1 &kp 2
+            &kp 3 &kp 4 &kp 5
+            &kp 6 &kp 7 &kp 8
+            &kp 9 &kp B &to 0
+            >;
+            };
+        }
     };
-};
